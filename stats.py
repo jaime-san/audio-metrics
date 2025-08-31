@@ -6,7 +6,9 @@ import soundfile as sf
 import pyloudnorm as pyln # rango dinámcico LUFS
 
 
-path = "media/"
+path = "audios/"
+#path = "descartadas/"
+#path = "pru/"
 
 
 def detect_noise_section(audio, sr, window_duration=0.1, threshold_percentile=5):
@@ -141,12 +143,7 @@ def dynamic_range2(audio, sr, frame_size=2048, hop_size=1024, threshold_db=-60):
     dynamic_range = 20 * np.log10(peak / noise_floor)
     return dynamic_range
 
-    ## Convert to mono if stereo
-    #if audio.ndim == 2:
-    #    audio = np.mean(audio, axis=1)
 
-    dr = calcular_rango_dinamico(audio, sr)
-    print(f"Estimated dynamic range: {dr:.2f} dB")
 
 
 
